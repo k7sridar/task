@@ -1,24 +1,29 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Add from "./add";
-import { Row, Table, Col } from "reactstrap";
+import { Row, Table, Col, Input } from "reactstrap";
 import { AppContext } from "./context";
-import Remove from "./delete";
+import Move from "./move";
 
-const Show = () => {
-  const { sample } = useContext(AppContext);
+const Table1 = () => {
+  const { table1, settable1 } = useContext(AppContext);
+  console.log(table1);
+  const handleChange = () => {
+    return;
+  };
 
   return (
     <div>
       <br />
       <Row>
-        <br />
-        <Col></Col>
+        <Col>
+          <Add />
+        </Col>
         <Col />
         <Col />
         <Col />
 
         <Col>
-          <Remove />
+          <Move />
         </Col>
       </Row>
       <br /> <br />
@@ -33,9 +38,15 @@ const Show = () => {
           </tr>
         </thead>
         <tbody>
-          {sample.map((sample, i) => {
+          {table1.map((sample, i) => {
             return (
               <tr>
+                <Input
+                  type="checkbox"
+                  id="chk"
+                  checked={sample.checked}
+                  onChange={() => handleChange()}
+                />
                 <th scope="row">{sample.id}</th>
                 <th>{sample.fullname}</th>
                 <th>{sample.email}</th>
@@ -50,4 +61,4 @@ const Show = () => {
   );
 };
 
-export default Show;
+export default Table1;

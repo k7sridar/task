@@ -12,8 +12,9 @@ import {
 import { AppContext } from "./context";
 
 const Add = () => {
-  const { sample, setSample } = useContext(AppContext);
+  const { table1, settable1 } = useContext(AppContext);
   const [user, setUser] = useState({
+    checked: "",
     fullname: "",
     address: "",
     email: "",
@@ -25,7 +26,7 @@ const Add = () => {
     if (user.fullname && user.email && user.jd && user.address) {
       const id = Math.floor(Math.random() * 999) + 100;
       console.log(user);
-      setSample([...sample, { ...user, id: id }]);
+      settable1([...table1, { ...user, id: id }]);
       setUser(null);
       document.querySelector("#name").value = "";
       document.querySelector("#email").value = "";
