@@ -4,12 +4,14 @@ import { Row, Table, Col, Input } from "reactstrap";
 import { AppContext } from "./context";
 import Move from "./move";
 
-const Table1 = () => {
+const Table2 = () => {
   const { table1, settable1 } = useContext(AppContext);
-  console.log(table1);
-  const handleChange = () => {
-    return;
+  const handleClick = (check, i) => {
+    table1.filter();
+    settable1([...table1, { checked: !check }]);
   };
+
+  console.log(table1);
 
   return (
     <div>
@@ -45,7 +47,7 @@ const Table1 = () => {
                   type="checkbox"
                   id="chk"
                   checked={sample.checked}
-                  onChange={() => handleChange()}
+                  onChange={() => handleClick(sample.checked, i)}
                 />
                 <th scope="row">{sample.id}</th>
                 <th>{sample.fullname}</th>
@@ -61,4 +63,4 @@ const Table1 = () => {
   );
 };
 
-export default Table1;
+export default Table2;
