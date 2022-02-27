@@ -6,9 +6,8 @@ import Move from "./move";
 
 const Table2 = () => {
   const { table1, settable1 } = useContext(AppContext);
-  const handleClick = (check, i) => {
-    table1.filter();
-    settable1([...table1, { checked: !check }]);
+  const handleClick = (sample, i) => {
+    settable1([...table1, { ...sample, checked: !sample.checked }]);
   };
 
   console.log(table1);
@@ -47,7 +46,7 @@ const Table2 = () => {
                   type="checkbox"
                   id="chk"
                   checked={sample.checked}
-                  onChange={() => handleClick(sample.checked, i)}
+                  onChange={() => handleClick(sample, i)}
                 />
                 <th scope="row">{sample.id}</th>
                 <th>{sample.fullname}</th>
