@@ -18,7 +18,7 @@ const Move = () => {
   };
   return (
     <div>
-      <Button onClick={() => movefn}>move to primary table</Button>
+      <Button onClick={() => movefn()}>move to primary table</Button>
     </div>
   );
 };

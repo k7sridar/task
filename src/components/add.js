@@ -14,7 +14,7 @@ import { AppContext } from "./context";
 const Add = () => {
   const { table1, settable1 } = useContext(AppContext);
   const [user, setUser] = useState({
-    checked: "",
+    checked: false,
     fullname: "",
     address: "",
     email: "",
