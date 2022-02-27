@@ -7,7 +7,6 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
-  Alert,
 } from "reactstrap";
 import { AppContext } from "./context";
 

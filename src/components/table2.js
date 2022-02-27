@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import Add from "./add";
 import { Row, Table, Col, Input } from "reactstrap";
 import { AppContext } from "./context";
@@ -6,8 +6,15 @@ import Move from "./move";
 
 const Table2 = () => {
   const { table1, settable1 } = useContext(AppContext);
-  const handleClick = (sample, i) => {
-    settable1([...table1, { ...sample, checked: !sample.checked }]);
+  //const { setSample } = useContext(AppContext);
+  const handleClick = (id) => {
+    const newarray = table1.map((item) => {
+      if (item.id === id) {
+        item.checked = !item.checked;
+      }
+      return item;
+    });
+    settable1(newarray);
   };
 
   console.log(table1);
@@ -31,9 +38,10 @@ const Table2 = () => {
       <Table id="t" hover size="sm">
         <thead>
           <tr>
+            <th></th>
             <th>User id</th>
             <th>Name</th>
-            <th>Email</th>
+
             <th>Joining Date</th>
             <th>address</th>
           </tr>
@@ -44,13 +52,13 @@ const Table2 = () => {
               <tr>
                 <Input
                   type="checkbox"
-                  id="chk"
+                  key={i}
                   checked={sample.checked}
-                  onChange={() => handleClick(sample, i)}
+                  onChange={() => handleClick(sample.id)}
                 />
-                <th scope="row">{sample.id}</th>
+                <th>{sample.id}</th>
                 <th>{sample.fullname}</th>
-                <th>{sample.email}</th>
+
                 <th>{sample.jd}</th>
                 <th>{sample.address}</th>
               </tr>

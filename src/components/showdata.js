@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import Add from "./add";
 import { Row, Table, Col } from "reactstrap";
 import { AppContext } from "./context";
 import Remove from "./delete";
@@ -35,7 +34,7 @@ const Show = () => {
         <tbody>
           {sample.map((sample, i) => {
             return (
-              <tr>
+              <tr key={i}>
                 <th scope="row">{sample.id}</th>
                 <th>{sample.fullname}</th>
                 <th>{sample.email}</th>

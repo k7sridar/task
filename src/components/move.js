@@ -1,19 +1,18 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { AppContext } from "./context";
-import { Button, Alert } from "reactstrap";
+import { Button } from "reactstrap";
 
 const Move = () => {
-  const { table1, settable1 } = useContext(AppContext);
+  const { table1 } = useContext(AppContext);
   const { sample, setSample } = useContext(AppContext);
   console.log(table1);
   const movefn = () => {
-    const check = table1
-      .filter((s, i) => {
-        return s.checked;
-      })
-      .indexOf(true);
+    const check = table1.filter((s, i) => {
+      return s.checked === true;
+    });
     console.log(check);
-    setSample(table1.filter((k, i) => i === check));
+    //const primary = table1.filter((k, i) => i === check);
+    setSample(check);
     console.log(sample);
   };
   return (
